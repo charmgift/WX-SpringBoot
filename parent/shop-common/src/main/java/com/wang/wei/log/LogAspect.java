@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
@@ -18,16 +19,16 @@ import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
+@Aspect
 public class LogAspect {
 	
 	//定义切面
-	@Pointcut("execution(public * com.wang.wei.controller.*.*(..))")
-	private void logAspect() {
-		
+	@Pointcut("execution(public * com.wang.wei.apiservice.*.*(..))")
+	private void controllerAspect() {
 	}
 	
 	//切入点
-	@Before(value = "logAspect()")
+	@Before(value = "controllerAspect()")
 	public void methodBefore(JoinPoint joinPoint) {
 		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
 		HttpServletRequest request = servletRequestAttributes.getRequest();
@@ -45,7 +46,7 @@ public class LogAspect {
 		log.info("请求内容:===========END================");
 	}
 	
-	@AfterReturning(returning = "o", pointcut = "controllerAspect()")
+	@AfterReturning(returning = "obj", pointcut = "controllerAspect()")
 	public void methodAfter(Object obj) {
 		log.info("返回内容:===========START================");
 		try {
