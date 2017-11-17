@@ -1,14 +1,35 @@
-*.iws
-*.ipr
-logs/*
-fileTemplates/*
-.idea/*
-.gradle/*
-src/main/generated/
-build/*
-bin/*
-*.classpath
-*.project
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
 .settings
-classes/*
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
 *.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+classes/
+<<<<<<< Updated upstream
+/bin/
+=======
+/bin
+>>>>>>> Stashed changes
+/.metadata/
+/.recommenders/
